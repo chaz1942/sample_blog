@@ -12,6 +12,13 @@ SampleBlog::Admin.controllers :posts do
     @posts = b
     render 'posts/index'
   end
+  
+  get :test do
+  markdownString = "# sample_blog\r\nrealize a simple blogs with padrino\r\n##requirement description\r\n\tusing padrino establish a simleple blogs,it has some function point as follow:\r\n\t1.index page is article list, click open the page;\r\n\t2.account function: User can register their account(Email,passport and nickname)\r\n\t3.blogs manager:User can add new article and delete their blogs.\r\n\t4.blogs show can display markdown grammar."
+  p markdownString
+  doc = Maruku.new(markdownString)
+  @data = doc.to_html_document
+  end
 
   get :new do
     @title = pat(:new_title, :model => 'post')

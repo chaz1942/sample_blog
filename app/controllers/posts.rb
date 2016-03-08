@@ -25,8 +25,11 @@ SampleBlog::App.controllers :posts do
   end
 
   get :show do
-    @posts=Post.find_by_id(params[:id])
-    render 'posts/show'
+    string=Post.find_by_id(params[:id]).body
+    p string
+    doc = Maruku.new(string)
+    p doc
+    @data = doc.to_html_document
   end
 
 end

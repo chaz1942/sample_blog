@@ -14,6 +14,7 @@ source 'https://rubygems.org'
 # gem 'oj'
 
 # Project requirements
+gem 'maruku'
 gem 'rake'
 
 # Component requirements

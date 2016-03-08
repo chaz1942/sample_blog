@@ -25,6 +25,7 @@ GEM
     i18n (0.7.0)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    maruku (0.7.2)
     mime-types (2.99.1)
     minitest (4.7.5)
     moneta (0.7.20)
@@ -95,6 +96,7 @@ DEPENDENCIES
   activerecord (>= 3.1)
   bcrypt
   haml
+  maruku
   padrino (= 0.13.1)
   rack-test
   rake
