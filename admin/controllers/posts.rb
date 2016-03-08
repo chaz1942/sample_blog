@@ -9,7 +9,6 @@ SampleBlog::Admin.controllers :posts do
         b.add(i)
       end
     end
-    p b
     @posts = b
     render 'posts/index'
   end
@@ -34,8 +33,15 @@ SampleBlog::Admin.controllers :posts do
   get :edit, :with => :id do
     @title = pat(:edit_title, :model => "post #{params[:id]}")
     @post = Post.find(params[:id])
+    p @post
+    p current_account
     if @post
-      render 'posts/edit'
+      if @post.account_id == current_account.id
+        render 'posts/edit'
+      else
+        redirect url(:posts, :index)
+      end
+      
     else
       flash[:warning] = pat(:create_error, :model => 'post', :id => "#{params[:id]}")
       halt 404
@@ -64,7 +70,7 @@ SampleBlog::Admin.controllers :posts do
   delete :destroy, :with => :id do
     @title = "Posts"
     post = Post.find(params[:id])
-    if post
+    if post.account_id == current_account.id
       if post.destroy
         flash[:success] = pat(:delete_success, :model => 'Post', :id => "#{params[:id]}")
       else

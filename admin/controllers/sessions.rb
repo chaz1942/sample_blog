@@ -1,5 +1,6 @@
 SampleBlog::Admin.controllers :sessions do
   get :new do
+    p "new sessions"
     render "/sessions/new", nil, :layout => false
   end
   post :create do
@@ -15,6 +16,16 @@ SampleBlog::Admin.controllers :sessions do
       flash.now[:error] = pat('login.error')
       render "/sessions/new", nil, :layout => false
     end
+  end
+  get :register do
+    p "register page"
+    @account = Account.new
+    render "/accounts/new", nil, :layout => false
+  end
+  post :get do
+    p "get page"
+    p params.require(:fname).permit(:text)
+    render "/sessions/new", nil, :layout => false
   end
 
   delete :destroy do

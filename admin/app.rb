@@ -29,12 +29,15 @@ module SampleBlog
 
     access_control.roles_for :any do |role|
       role.protect '/'
+      role.allow   '/register'
       role.allow   '/sessions'
+      role.allow   '/accounts/new'
+      role.allow   '/accounts/create'
     end
 
     access_control.roles_for :admin do |role|
       role.project_module :posts, '/posts'
-      role.project_module :accounts, '/accounts'
+      # role.project_module :accounts, '/accounts' #注销改行后 将无法显示注册账户选项
     end
 
     # Custom error management 
