@@ -25,11 +25,14 @@ SampleBlog::App.controllers :posts do
   end
 
   get :show do
-    string=Post.find_by_id(params[:id]).body
-    p string
-    doc = Maruku.new(string)
-    p doc
-    @data = doc.to_html_document
+    @getPost = Post.find_by_id(params[:id])
+    postsBody = @getPost.body
+    htmlCode = (Maruku.new(postsBody)).to_html_document
+    splitsHtmlCode = htmlCode.split("title>");
+    len = splitsHtmlCode[0].length
+    httphead = splitsHtmlCode[0].slice(0,len-1)
+    titleContent = "<title>#{@getPost.title}</title><h1 style=\"text-align:center\">#{@getPost.title}</h1>"
+    httptail = splitsHtmlCode[2]
+    @posts = httphead + titleContent + httptail
   end
-
 end
