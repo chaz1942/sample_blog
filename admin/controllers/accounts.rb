@@ -1,7 +1,14 @@
 SampleBlog::Admin.controllers :accounts do
   get :index do
     @title = "Accounts"
-    @accounts = Account.all
+    b = Set.new
+    allAccount = Account.all
+    allAccount.each do |i|
+      if i.id == current_account.id
+        b.add(i)
+      end
+    end
+    @accounts = b
     render 'accounts/index'
   end
 
@@ -30,7 +37,12 @@ SampleBlog::Admin.controllers :accounts do
     @title = pat(:edit_title, :model => "account #{params[:id]}")
     @account = Account.find(params[:id])
     if @account
-      render 'accounts/edit'
+      if @account.id == current_account.id
+        render 'accounts/edit'
+      else
+        halt 404
+      end
+      
     else
       flash[:warning] = pat(:create_error, :model => 'account', :id => "#{params[:id]}")
       halt 404
@@ -57,36 +69,10 @@ SampleBlog::Admin.controllers :accounts do
   end
 
   delete :destroy, :with => :id do
-    @title = "Accounts"
-    account = Account.find(params[:id])
-    if account
-      if account != current_account && account.destroy
-        flash[:success] = pat(:delete_success, :model => 'Account', :id => "#{params[:id]}")
-      else
-        flash[:error] = pat(:delete_error, :model => 'account')
-      end
-      redirect url(:accounts, :index)
-    else
-      flash[:warning] = pat(:delete_warning, :model => 'account', :id => "#{params[:id]}")
-      halt 404
-    end
+    halt 404
   end
 
   delete :destroy_many do
-    @title = "Accounts"
-    unless params[:account_ids]
-      flash[:error] = pat(:destroy_many_error, :model => 'account')
-      redirect(url(:accounts, :index))
-    end
-    ids = params[:account_ids].split(',').map(&:strip)
-    accounts = Account.find(ids)
-    
-    if accounts.include? current_account
-      flash[:error] = pat(:delete_error, :model => 'account')
-    elsif Account.destroy accounts
-    
-      flash[:success] = pat(:destroy_many_success, :model => 'Accounts', :ids => "#{ids.join(', ')}")
-    end
-    redirect url(:accounts, :index)
+    halt 404
   end
 end

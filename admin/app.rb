@@ -37,7 +37,7 @@ module SampleBlog
 
     access_control.roles_for :admin do |role|
       role.project_module :posts, '/posts'
-      # role.project_module :accounts, '/accounts' #注销改行后 将无法显示注册账户选项
+      role.project_module :accounts, '/accounts'
     end
 
     # Custom error management 
