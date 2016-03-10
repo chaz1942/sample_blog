@@ -18,7 +18,6 @@ SampleBlog::App.controllers :posts do
   # get '/example' do
   #   'Hello world!'
   # end
-  
   get :index do
     @posts=Post.all(:order => 'created_at desc')
     render 'posts/index'
@@ -32,4 +31,6 @@ SampleBlog::App.controllers :posts do
     httpHead = "<title>#{title}</title><h1 style=\"text-align:center\">#{title}</h1>"
     @posts = httpHead + markdowndisplay
   end
+
+
 end

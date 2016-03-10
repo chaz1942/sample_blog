@@ -1,6 +1,7 @@
 %ul.nav.nav-tabs
   %li.active=link_to tag_icon(:list, pat(:list)), url(:posts, :index)
   %li=link_to tag_icon(:plus, pat(:new)), url(:posts, :new)
+  %li=link_to tag_icon(:list,pat(:show)), url("../posts")
 
 .tabs-content
   %table#list.table.table-striped.table-hover.table-condensed

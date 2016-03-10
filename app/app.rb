@@ -6,7 +6,9 @@ module SampleBlog
     register Padrino::Helpers
 
     enable :sessions
-
+    get '/' do
+        redirect(url("/posts"))
+    end
     ##
     # Caching support.
     #
