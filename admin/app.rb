@@ -39,7 +39,9 @@ module SampleBlog
       role.project_module :posts, '/posts'
       role.project_module :accounts, '/accounts'
     end
-
+    get "/" do
+      redirect("/admin/posts")
+    end
     # Custom error management 
     error(403) { @title = "Error 403"; render('errors/403', :layout => :error) }
     error(404) { @title = "Error 404"; render('errors/404', :layout => :error) }

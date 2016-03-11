@@ -8,12 +8,10 @@
 		%div{:class => "row row-offcanvas row-offcanvas-right"}
 			%div{:class => "col-xs-12 col-sm-9"}
 				%div.jumbotron
-					%a{:href => "/admin"}
-						%h2{:align => "right"}login/register
-					%h1 Hello blog
-					%p This is an example blog with padrino. welcome login and share you idear
+					%h1 Hello world
+					%p This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.
 				%div.row
-					#posts= partial 'posts/post', :collection => @posts
+					#posts= partial 'posts/listitem', :collection => @posts, :as => @post
 		%footer
 			%p &copy; 2015 Company, Inc.
 	%script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"}

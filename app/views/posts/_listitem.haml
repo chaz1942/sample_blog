@@ -1,0 +1,4 @@
+.post
+  .title= link_to @post.title, url_for(:posts, :show, :id => @post)
+  .date= time_ago_in_words(@post.created_at || Time.now) + '以前'
+  .body= simple_format(@post.body)

@@ -1,1 +1,58 @@
-<% @posts %>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="apple-mobile-web-app-capable" content="no">
+  <meta content='True' name='HandheldFriendly' />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="alternate" type="application/rss+xml" title="订阅最新帖" href="https://ruby-china.org/topics/feed" />
+  <link rel="mask-icon" href="https://ruby-china-files.b0.upaiyun.com/assets/mask-a8a794644276e73b80df003c48fce5582009c899acdf43e6ca8ba286cd8a2e63.svg" color="#BD2D2D" />
+  <link rel="stylesheet" media="screen" href="https://ruby-china-files.b0.upaiyun.com/assets/front-4436f4689f7828b4c2fabed07963411d7429150d36385570299c17d10b9d4c7f.css" data-turbolinks-track="true" />
+  <script src="https://ruby-china-files.b0.upaiyun.com/assets/app-f300bec8b5fb096ee685668e1992914f9081f5191c4056bf22a289a80f838c9a.js" data-turbolinks-track="true"></script>
+  <script src="//cdn.bootcss.com/markdown.js/0.6.0-beta1/markdown.min.js"></script>
+  <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="SLstqgCVeR6zJoF8nfmDdGlM30UznRWk97iHdhr9f6pWGsCnSXuGQ1MF5lmSN5ZJoWuE+Dg9oWcEorXKMiIxEg==" />
+  <link rel="dns-prefetch" href="//l.ruby-china.org" />
+<meta name="apple-itunes-app" content="app-id=1072028763" />
+</head>
+<body data-controller-name="topics">
+  <div class="col-md-9">
+      <div class="topic-detail panel panel-default">
+        <div class="panel-heading media clearfix">
+          <a href="/posts">
+          	<h1>返回主页</h1></a>
+          <div class="media-body">
+            <h1 class="media-heading"><%= @title %></h1>
+          </div>
+        </div>
+        <div class="panel-body markdown">
+          <article>
+            <%= @posts.html_safe %>
+          </article>
+        </div>
+        </div>
+    </div>
+  <script type="text/javascript" data-turbolinks-eval=false>
+    App.root_url = "https://ruby-china.org/";
+    App.asset_url = "https://ruby-china-files.b0.upaiyun.com";
+    App.locale = "zh-CN";
+      App.current_user_id = 19224;
+      App.access_token = "a1769eee82e892eaec54802637c8bbd3";
+  </script>
+    <script type="text/javascript">
+    Topics.topic_id = 634;
+    $(document).ready(function(){
+        $("#replies .reply a.edit[data-uid='19224']").css('display','inline-block');
+    })
+  </script>
+
+  <script>
+    ga('create', 'UA-26598064-1', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+  </script>
+  <div class="zoom-overlay"></div>
+</body>
+</html>

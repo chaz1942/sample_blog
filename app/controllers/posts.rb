@@ -29,7 +29,17 @@ SampleBlog::App.controllers :posts do
     title = @getPost.title
     markdowndisplay = (Maruku.new(postsBody)).to_html
     httpHead = "<title>#{title}</title><h1 style=\"text-align:center\">#{title}</h1>"
-    @posts = httpHead + markdowndisplay
+    puts markdowndisplay
+    @title = @getPost.title
+    @posts = markdowndisplay
+    render "/posts/show"
+  end
+  get :test do
+    @posts=Post.all(:order => 'created_at desc')
+    @posts.each do |i|
+      p i 
+    end
+    render "/posts/test"
   end
 
 
