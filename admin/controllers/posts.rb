@@ -1,6 +1,5 @@
 SampleBlog::Admin.controllers :posts do
   get :index do
-    puts $account
     @title = "Posts"
     post_data = Post.all
     p1 = Post.first
@@ -34,8 +33,6 @@ SampleBlog::Admin.controllers :posts do
   get :edit, :with => :id do
     @title = pat(:edit_title, :model => "post #{params[:id]}")
     @post = Post.find(params[:id])
-    p @post
-    p current_account
     if @post
       if @post.account_id == current_account.id
         render 'posts/edit'

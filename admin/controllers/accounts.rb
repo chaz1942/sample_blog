@@ -13,16 +13,11 @@ SampleBlog::Admin.controllers :accounts do
   end
 
   get :new do
-    puts current_account
     unless current_account.id > 0
-      puts "new account"
       @title = pat(:new_title, :model => 'account')
-      p @title
       @account = Account.new
-      p @account
       render 'accounts/new'
     else
-      puts "older accounts"
       redirect(url(:accounts, :index))
     end
   end

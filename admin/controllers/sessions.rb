@@ -1,19 +1,16 @@
 SampleBlog::Admin.controllers :sessions do
   get :new do
-    p "new sessions"
     render "/sessions/new", nil, :layout => false
   end
   post :create do
     if account = Account.authenticate(params[:email], params[:password])
       set_current_account(account)
       $account = account
-      puts $account
       redirect url(:base, :index)
     elsif Padrino.env == :development && params[:bypass]
       account = Account.first
       set_current_account(account)
       $account = account
-      puts $account
       redirect url(:base, :index)
     else
       params[:email] = h(params[:email])
@@ -22,12 +19,10 @@ SampleBlog::Admin.controllers :sessions do
     end
   end
   get :register do
-    p "register page"
     @account = Account.new
     render "/accounts/new", nil, :layout => false
   end
   post :get do
-    p "get page"
     p params.require(:fname).permit(:text)
     render "/sessions/new", nil, :layout => false
   end
