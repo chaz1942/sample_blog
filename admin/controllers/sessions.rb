@@ -6,10 +6,14 @@ SampleBlog::Admin.controllers :sessions do
   post :create do
     if account = Account.authenticate(params[:email], params[:password])
       set_current_account(account)
+      $account = account
+      puts $account
       redirect url(:base, :index)
     elsif Padrino.env == :development && params[:bypass]
       account = Account.first
       set_current_account(account)
+      $account = account
+      puts $account
       redirect url(:base, :index)
     else
       params[:email] = h(params[:email])
@@ -30,6 +34,7 @@ SampleBlog::Admin.controllers :sessions do
 
   delete :destroy do
     set_current_account(nil)
+    $account = nil
     redirect url(:sessions, :new)
   end
 end

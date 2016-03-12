@@ -19,6 +19,11 @@ SampleBlog::App.controllers :posts do
   #   'Hello world!'
   # end
   get :index do
+    if $account != nil
+      @login_name = "welcome, " + $account.surname
+    else
+      @login_name = "login/register"
+    end
     @posts=Post.all(:order => 'created_at desc')
     render 'posts/index'
   end

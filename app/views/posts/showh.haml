@@ -1,0 +1,14 @@
+%head
+  %link{:rel => "stylesheet", :media => "screen", :href => "https://ruby-china-files.b0.upaiyun.com/assets/front-4436f4689f7828b4c2fabed07963411d7429150d36385570299c17d10b9d4c7f.css"}
+  %script{:src => "https://ruby-china-files.b0.upaiyun.com/assets/app-f300bec8b5fb096ee685668e1992914f9081f5191c4056bf22a289a80f838c9a.js"}
+%body
+  %div{:class => "col-md-9"}
+    %div{:class => "topic-detail panel panel-default"}
+      %div{:class => "panel-heading media clearfix"}
+        %a{:href => "/"}
+          %h4 return
+        %div{:class => "media-body"}
+          %h1{:class => "media-heading"}=@title.title
+      %div{:class => "panel-body markdown"}
+        %article
+          != @posts

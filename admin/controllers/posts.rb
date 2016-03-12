@@ -1,5 +1,6 @@
 SampleBlog::Admin.controllers :posts do
   get :index do
+    puts $account
     @title = "Posts"
     post_data = Post.all
     p1 = Post.first
@@ -97,15 +98,5 @@ SampleBlog::Admin.controllers :posts do
       flash[:success] = pat(:destroy_many_success, :model => 'Posts', :ids => "#{ids.join(', ')}")
     end
     redirect url(:posts, :index)
-  end
-  def fillter(post)
-    b = Set.new()
-    post.each do |i|
-      if i.account_id == current_account
-        p i
-        b.add(i)
-      end
-    end
-    return b
   end
 end
