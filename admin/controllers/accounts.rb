@@ -24,6 +24,7 @@ SampleBlog::Admin.controllers :accounts do
 
   post :create do
     @account = Account.new(params[:account])
+    @account.role = "admin"
     if @account.save
       @title = pat(:create_title, :model => "account #{@account.id}")
       flash[:success] = pat(:create_success, :model => 'Account')
